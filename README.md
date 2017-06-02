@@ -1,2 +1,3 @@
-# curso-ProgramacionBasica-Platzi
-Ejercicios de practicas del curso de programación básica impartida en Platzi
+# Pragramación Básica de Platzi
+
+Ejercicios de prácticas del curso de programación básica impartida en Platzi
