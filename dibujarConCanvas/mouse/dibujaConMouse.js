@@ -3,9 +3,15 @@ var lienzo = d.getContext("2d");
 var bolean=true, estaApretado=false;
 var ancho=d.width, alto=d.height;
 var xini, yini, xfin, yfin;
-document.addEventListener("mousedown",apretar);
+var color;
+document.addEventListener("mousedown",function(){//detecta cuando se apreto el mouse
+	estaApretado=true;
+});
+document.addEventListener("mouseup",function(){//detecta cuando se solto el mouse
+	estaApretado=false;
+	bolean=true;
+});
 document.addEventListener("mousemove",moviendo);
-document.addEventListener("mouseup",soltar);
 
 lienzo.strokeStyle="brown";
 lienzo.strokeRect(ancho-ancho+1,alto-alto+1,ancho-2,alto-2);//para dibujar cuadrado/borde
@@ -25,24 +31,14 @@ function moviendo (evento){
 			xfin=evento.layerX;
 			yfin=evento.layerY;
 		}
-		dibujar (xini, yini, xfin, yfin);
+		dibujar (xini, yini, xfin, yfin,document.getElementById("colorID").value);
 	}
 }
 
-//detecta cuando se apreto el mouse
-function apretar (evento){
-	estaApretado=true;
-}
-
-//detecta cuando se solto el mouse
-function soltar (evento){
-	estaApretado=false;
-}
-
 //dibuja en el lienzo
-function dibujar (xini, yini, xfin, yfin){
+function dibujar (xini, yini, xfin, yfin,color){
 	lienzo.beginPath();//arranca el trazo
-	lienzo.strokeStyle="brown";//colorea el trazado
+	lienzo.strokeStyle=color;//colorea el trazado
 	lienzo.lineWidth=3;//modifica el grosor de la linea del trazo
 	lienzo.moveTo(xini,yini);//mover el lapiz
 	lienzo.lineTo(xfin,yfin);//traza una linea
